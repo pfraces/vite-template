@@ -1,0 +1,7 @@
+{
+  "*.{js,css,html,json,md}": "prettier --list-different",
+  "*.js": "eslint",
+  "*.css": "stylelint",
+  "*.html": "htmlhint",
+  "*.md": "markdownlint-cli2"
+}

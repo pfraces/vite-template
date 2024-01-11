@@ -1,0 +1,57 @@
+:root {
+  font-family: sans-serif;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: #213547;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #eee;
+  cursor: pointer;
+  color: inherit;
+
+  &:hover {
+    border-color: #aaa;
+  }
+}
+
+.grow {
+  flex: 1;
+}
+
+.column-reverse {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.padded {
+  padding: 1.5em;
+}
+
+.logo {
+  height: 8em;
+  transition: filter 300ms;
+
+  &:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+  }
+}
