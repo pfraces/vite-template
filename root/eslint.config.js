@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths';
 import globals from 'globals';
 
 export default [
@@ -23,6 +24,19 @@ export default [
       globals: {
         ...globals.browser
       }
+    },
+    plugins: {
+      'no-relative-import-paths': noRelativeImportPaths
+    },
+    rules: {
+      'no-relative-import-paths/no-relative-import-paths': [
+        'error',
+        {
+          allowSameFolder: true,
+          rootDir: 'src',
+          prefix: '@'
+        }
+      ]
     }
   }
 ];
