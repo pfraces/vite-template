@@ -6,10 +6,18 @@ export default [
   { ignores: ['dist'] },
   {
     files: ['**/*.js'],
+    ignores: ['src/**'],
     languageOptions: {
       globals: {
-        ...globals.browser,
         ...globals.node
+      }
+    }
+  },
+  {
+    files: ['src/**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.browser
       }
     }
   }
