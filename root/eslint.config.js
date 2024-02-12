@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import importPlugin from 'eslint-plugin-import';
 import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths';
 import globals from 'globals';
 
@@ -7,15 +8,38 @@ export default [
   { ignores: ['dist'] },
   {
     files: ['**/*.js'],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 'latest'
+      }
+    },
+    plugins: {
+      import: importPlugin
+    },
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: 'jsconfig.json'
+        }
+      },
+      'import/parsers': {
+        espree: ['.js']
+      }
+    },
+    rules: {
+      ...importPlugin.configs.recommended.rules,
+      'no-console': 'error',
+      curly: 'error',
+      'import/extensions': ['error', 'ignorePackages']
+    }
+  },
+  {
+    files: ['**/*.js'],
     ignores: ['src/**'],
     languageOptions: {
       globals: {
         ...globals.node
       }
-    },
-    rules: {
-      'no-console': 'error',
-      curly: 'error'
     }
   },
   {
