@@ -53,6 +53,12 @@ git hooks._
 
 - [Vitest](https://vitest.dev/)
 
+### CSS
+
+- [PostCSS](https://postcss.org/)
+- [PostCSS Preset Env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env#readme)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+
 ## Project structure
 
 ```text
@@ -106,35 +112,10 @@ unit tests.
 }
 ```
 
-## ES module imports
-
-VSCode is configured to include file extensions from import path suggestions
-(via `.vscode/settings.json`) which are required for ES modules.
-
-### Absolute paths
-
-The project is configured to support absolute paths from both Vite and VSCode
-(via `tsconfig.json`).
-
-_Beacuse Vite only suuports `tsconifg.json`, it is used instead of
-`jsconfig.json` to define path aliases. Since this is a JavaScript-based
-template, `{ "allowJs": true, "noEmit": true }` have been added to ensure it
-behaves as a `jsconfig.json` replacement._
-
-_Learn more:
-[VSCode jsconfig.json Reference](https://code.visualstudio.com/docs/languages/jsconfig)_
-
-## Application entry point
-
-Vite is configured to look for `src/index.html` as the entry point to your
-application (via `vite.config.js`).
-
-_Learn more:_
-
-- _[Configuring Vite - root](https://vitejs.dev/config/shared-options.html#root)._
-- _[`index.html` and the Project Root](https://vitejs.dev/guide/#index-html-and-project-root)_
-
 ## VSCode recommended extensions
+
+VSCode is configured to recommend the following extensions from the extensions
+view (via `.vscode/extensions.json`):
 
 - [editorconfig.editorconfig](https://marketplace.visualstudio.com/items?itemName=editorconfig.editorconfig)
 - [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -142,9 +123,46 @@ _Learn more:_
 - [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [htmlhint.vscode-htmlhint](https://marketplace.visualstudio.com/items?itemName=htmlhint.vscode-htmlhint)
 - [davidanson.vscode-markdownlint](https://marketplace.visualstudio.com/items?itemName=davidanson.vscode-markdownlint)
+- [vunguyentuan.vscode-postcss](https://marketplace.visualstudio.com/items?itemName=vunguyentuan.vscode-postcss)
 
-VSCode is configured to recommend the previous extensions from the extensions
-view (via `.vscode/extensions.json`).
+## ES module imports
+
+VSCode is configured to include file extensions from import path suggestions
+(via `.vscode/settings.json`) which are required for ES modules.
+
+ESLint is configured to throw an error if it founds a local import without
+extension.
+
+### Path aliases
+
+The project is configured to support path aliases from both VSCode and Vite (via
+`jsconfig.json`).
+
+VSCode has builtin support for both `jsconfig.json` and `tsconfig.json`.
+
+For Vite, `vite-tsconfig-paths` plugin is used which supports both
+`jsconfig.json` and `tsconfig.json`.
+
+_Learn more:_
+
+- _[VSCode jsconfig.json Reference](https://code.visualstudio.com/docs/languages/jsconfig)_
+- _[vite-tsconfig-paths](https://github.com/aleclarson/vite-tsconfig-paths)_
+
+### Relative to parent imports are not allowed
+
+ESLint is configured to throw an error if it founds a relative to parent import.
+
+There is a default `@` path alias pointing to `src/` so instead of importing
+modules relative to parent directory (`../`) it is enforced to use the path
+relative to src (`@/`).
+
+## Application entry point
+
+By default, Vite is configured to look for `index.html` at the root of the
+project as the entry point to your application.
+
+_Learn more:
+[`index.html` and the Project Root](https://vitejs.dev/guide/#index-html-and-project-root)_
 
 ## Publishing to npm
 
