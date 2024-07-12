@@ -66,9 +66,9 @@ git hooks._
   dist/
   public/
   src/
-    index.html
     main.js
     styles.css
+  index.html
 ```
 
 ### `./`
