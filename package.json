@@ -6,7 +6,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "format": "prettier --write . !root !package.json !package-lock.json",
+    "format": "prettier --write . !root",
     "lint:md": "markdownlint-cli2 **/*.md !node_modules !root"
   },
   "devDependencies": {
