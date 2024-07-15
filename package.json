@@ -7,10 +7,13 @@
   "private": true,
   "scripts": {
     "format": "prettier --write . !root",
-    "lint:md": "markdownlint-cli2 **/*.md !node_modules !root"
+    "lint:md": "markdownlint-cli2 **/*.md !node_modules !root",
+    "deps:check": "ncu",
+    "deps:update": "ncu --upgrade && npm install"
   },
   "devDependencies": {
-    "markdownlint-cli2": "^0.11.0",
-    "prettier": "^3.1.1"
+    "markdownlint-cli2": "^0.13.0",
+    "npm-check-updates": "^16.14.20",
+    "prettier": "^3.3.3"
   }
 }
